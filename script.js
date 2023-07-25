@@ -54,14 +54,15 @@ function renderVehicleList(vehicles) {
 		title.textContent = vehicle.offer_details.model_details;
 
 		const subTitle = document.createElement("h3");
-		subTitle.textContent = vehicle.offer_details.kabina;
+		subTitle.textContent = vehicle.offer_details.kabina.toUpperCase();
 
 		const availability = document.createElement("h3");
 		availability.textContent = !!vehicle.in_stock
 			? "Dostępny od ręki!"
-			: "Przewidywana data dostawy " +
+			: "Przewidywana data dostawy: " +
 			  getMonth(vehicle.pdd) +
-			  vehicle.pdd.slice(0, 4);
+			  vehicle.pdd.slice(0, 4) +
+			  "*";
 
 		const productionYear = document.createElement("div");
 		productionYear.innerHTML = `<div>Rok produkcji:</div> <div> ${vehicle.pyear}</div>`;
@@ -78,10 +79,16 @@ function renderVehicleList(vehicles) {
 		city.innerHTML = `<div>Miasto: </div> <div>${vehicle.miasto}</div>`;
 
 		const price = document.createElement("div");
-		price.innerHTML = `<div>Cena netto: </div> <div class="price">${vehicle.car_price_disc}  zł</div>`;
+		const priceNet = vehicle.car_price_disc.toString();
+		price.innerHTML = `<div>Cena netto: </div> <div class="price">
+		${priceNet.slice(-6, -3)} ${priceNet.slice(-3)}  <span> zł</span></div>`;
 
 		const priceTotal = document.createElement("div");
-		priceTotal.innerHTML = `<div>Cena brutto: </div> <div>${vehicle.total_gross_price}  zł</div>`;
+		const priceTot = vehicle.total_gross_price.toString();
+		priceTotal.innerHTML = `<div>Cena brutto: </div> <div>${priceTot.slice(
+			-6,
+			-3
+		)} ${priceTot.slice(-3)}  <span> zł</span></div>`;
 
 		const button = document.createElement("button");
 		button.innerText = "ZOBACZ OFERTĘ";

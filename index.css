@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Encode Sans", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -40,8 +40,8 @@ main {
           justify-content: center;
   background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(30%, grey));
   background: linear-gradient(black, grey 30%);
-  margin: 15px;
-  padding: 25px;
+  margin: 10px;
+  padding: 40px;
   text-align: center;
   color: #e1e1e1;
 }
@@ -53,12 +53,20 @@ main {
 .vehicleCard h2 {
   margin: 0;
   color: #e1e1e1;
-  font-size: 18px;
+  font-size: 19px;
 }
 
-.vehicleCard h3 {
+.vehicleCard h3:nth-child(2) {
+  margin: 5px 5px 20px 5px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.vehicleCard h3:nth-child(3) {
   margin: 5px;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .vehicleCard div {
@@ -69,8 +77,10 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   font-size: 14px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .vehicleCard div:nth-child(2) {
@@ -82,14 +92,26 @@ main {
           justify-content: flex-end;
   color: white;
   font-size: 15px;
+  font-weight: 600;
 }
 
 .vehicleCard div:nth-child(2).price {
   font-size: 20px;
+  margin-top: 10px;
 }
 
 .vehicleCard button {
   border: none;
-  padding: 10px 30px;
+  padding: 10px 40px;
   margin-top: 10px;
+  font-weight: 500;
+}
+
+.vehicleCard div:nth-child(2) span {
+  margin-left: 5px;
+  font-weight: 400;
+  color: #e1e1e1;
+  font-size: 15px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }/*# sourceMappingURL=index.css.map */
