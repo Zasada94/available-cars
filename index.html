@@ -14,8 +14,29 @@
 </head>
 
 <body>
-    <main>
+    <header>
         <h1>OFERTY DEALERÓW</h1>
+        <div class="filters">
+            <label>
+                <input type="checkbox" id="availableOnly">
+                DOSTĘPNE
+            </label>
+            <label>
+                <input type="checkbox" id="automaticGearbox">
+                SKRZYNIA AUTOMATYCZNA
+            </label>
+            <select>
+                <option id="sortCheapest">CENY ROSNĄCO</option>
+                <option id="sortExpensive">CENY MALEJĄCO</option>
+            </select>
+            <select id="cityFilter">
+                <option value="">WYBIERZ MIASTO</option>
+            </select>
+
+        </div>
+    </header>
+    <main>
+
         <div class="vehicleList" id="vehicleList">
         </div>
     </main>
