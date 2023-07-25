@@ -45,7 +45,7 @@ function renderVehicleList(vehicles) {
 
 	vehicles.forEach((vehicle) => {
 		const card = document.createElement("div");
-		card.classList.add("vehicle-card");
+		card.classList.add("vehicleCard");
 
 		const img = document.createElement("img");
 		img.src = vehicle.offer_details.image_paths.front;
@@ -63,25 +63,29 @@ function renderVehicleList(vehicles) {
 			  getMonth(vehicle.pdd) +
 			  vehicle.pdd.slice(0, 4);
 
-		const productionYear = document.createElement("p");
-		productionYear.textContent = "Rok produkcji: " + vehicle.pyear;
+		const productionYear = document.createElement("div");
+		productionYear.innerHTML = `<div>Rok produkcji:</div> <div> ${vehicle.pyear}</div>`;
 
-		const gear = document.createElement("p");
-		gear.textContent =
-			"Skrzynia: " +
-			(vehicle.offer_details.skrzynia_automatyczna
-				? "Automatyczna"
-				: "Manualna");
+		const gear = document.createElement("div");
+		gear.innerHTML = `<div>Skrzynia: </div>
+			${
+				vehicle.offer_details.skrzynia_automatyczna
+					? "<div>Automatyczna</div>"
+					: "<div>Manualna</div>"
+			}`;
 
-		const price = document.createElement("p");
-		price.textContent = "Cena netto: " + vehicle.car_price_disc + " zł";
+		const city = document.createElement("div");
+		city.innerHTML = `<div>Miasto: </div> <div>${vehicle.miasto}</div>`;
 
-		const priceTotal = document.createElement("p");
-		priceTotal.textContent =
-			"Cena brutto: " + vehicle.total_gross_price + " zł";
+		const price = document.createElement("div");
+		price.innerHTML = `<div>Cena netto: </div> <div class="price">${vehicle.car_price_disc}  zł</div>`;
 
-		const city = document.createElement("p");
-		city.textContent = "Miasto: " + vehicle.miasto;
+		const priceTotal = document.createElement("div");
+		priceTotal.innerHTML = `<div>Cena brutto: </div> <div>${vehicle.total_gross_price}  zł</div>`;
+
+		const button = document.createElement("button");
+		button.innerText = "ZOBACZ OFERTĘ";
+
 		card.appendChild(title);
 		card.appendChild(subTitle);
 		card.appendChild(availability);
@@ -91,6 +95,7 @@ function renderVehicleList(vehicles) {
 		card.appendChild(city);
 		card.appendChild(price);
 		card.appendChild(priceTotal);
+		card.appendChild(button);
 
 		vehicleList.appendChild(card);
 	});

@@ -4,4 +4,67 @@ body {
 	padding: 0;
 }
 
+main {
+	max-width: 1400px;
+	margin: 0 auto;
+}
 
+.vehicleList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.vehicleCard {
+	width: 250px;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(black, grey 30%);
+	margin: 15px;
+	padding: 25px;
+	text-align: center;
+	color: #e1e1e1;
+}
+
+.vehicleCard img {
+	width: 110%;
+}
+
+.vehicleCard h2 {
+	margin: 0;
+	color: #e1e1e1;
+	font-size: 18px;
+}
+
+.vehicleCard h3 {
+	margin: 5px;
+	font-size: 16px;
+}
+
+.vehicleCard div {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+.vehicleCard div:nth-child(2) {
+	display: flex;
+	justify-content: flex-end;
+	color: white;
+	font-size: 15px;
+}
+
+.vehicleCard div:nth-child(2).price {
+	font-size: 20px;
+}
+
+.vehicleCard button {
+	border: none;
+	padding: 10px 30px;
+	margin-top: 10px;
+}

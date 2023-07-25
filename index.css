@@ -2,4 +2,94 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.vehicleList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vehicleCard {
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(30%, grey));
+  background: linear-gradient(black, grey 30%);
+  margin: 15px;
+  padding: 25px;
+  text-align: center;
+  color: #e1e1e1;
+}
+
+.vehicleCard img {
+  width: 110%;
+}
+
+.vehicleCard h2 {
+  margin: 0;
+  color: #e1e1e1;
+  font-size: 18px;
+}
+
+.vehicleCard h3 {
+  margin: 5px;
+  font-size: 16px;
+}
+
+.vehicleCard div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.vehicleCard div:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: white;
+  font-size: 15px;
+}
+
+.vehicleCard div:nth-child(2).price {
+  font-size: 20px;
+}
+
+.vehicleCard button {
+  border: none;
+  padding: 10px 30px;
+  margin-top: 10px;
 }/*# sourceMappingURL=index.css.map */
