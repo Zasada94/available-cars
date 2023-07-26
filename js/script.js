@@ -116,20 +116,18 @@ const renderVehicleList = (vehicles) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
 	const data = await fetchData();
-	let filteredData = data.slice();
+	const cityFilter = document.getElementById("cityFilter");
+	const sortPrice = document.getElementById("sortPrice");
+	const availableOnly = document.getElementById("availableOnly");
+	const automaticGearbox = document.getElementById("automaticGearbox");
+	const searchInput = document.getElementById("search");
 
-	const renderFilteredData = () => {
-		renderVehicleList(filteredData);
-	};
-
-	//checking filters simultaneously
 	const applyFilters = () => {
 		const selectedCity = cityFilter.value;
-		const onlyAvailable = document.getElementById("availableOnly").checked;
-		const onlyAutomaticGearbox =
-			document.getElementById("automaticGearbox").checked;
+		const onlyAvailable = availableOnly.checked;
+		const onlyAutomaticGearbox = automaticGearbox.checked;
 
-		filteredData = data.filter((vehicle) => {
+		const filteredData = data.filter((vehicle) => {
 			const cityFilterMatch = !selectedCity || selectedCity === vehicle.miasto;
 			const availabilityFilterMatch = !onlyAvailable || vehicle.in_stock === 1;
 			const automaticGearboxFilterMatch =
@@ -142,13 +140,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 			);
 		});
 
-		sortData();
-		renderFilteredData();
+		const input = searchInput.value.toLowerCase();
+		const searched = input
+			? filteredData.filter((el) =>
+					Object.values(el).some((val) =>
+						String(val).toLowerCase().includes(input)
+					)
+			  )
+			: filteredData;
+
+		sortData(searched);
+		renderVehicleList(searched);
 	};
 
-	// Cities filter
 	const cities = [...new Set(data.map((vehicle) => vehicle.miasto))];
-	const cityFilter = document.getElementById("cityFilter");
 	cities.forEach((city) => {
 		const option = document.createElement("option");
 		option.value = city;
@@ -156,33 +161,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 		cityFilter.appendChild(option);
 	});
 
-	cityFilter.addEventListener("change", applyFilters);
-
-	// Cheapest and most expensive sorting
-	const sortPrice = document.getElementById("sortPrice");
-	const sortData = () => {
+	const sortData = (data) => {
 		const selectedFilter = sortPrice.value;
 		if (selectedFilter === "CENY ROSNĄCO") {
-			filteredData.sort((a, b) => a.total_gross_price - b.total_gross_price);
+			data.sort((a, b) => a.total_gross_price - b.total_gross_price);
 		} else {
-			filteredData.sort((a, b) => b.total_gross_price - a.total_gross_price);
+			data.sort((a, b) => b.total_gross_price - a.total_gross_price);
 		}
 	};
 
-	sortPrice.addEventListener("change", () => {
-		sortData();
-		renderFilteredData();
-	});
-
-	// availability filter
-	document
-		.getElementById("availableOnly")
-		.addEventListener("change", applyFilters);
-
-	// gearbox filter
-	document
-		.getElementById("automaticGearbox")
-		.addEventListener("change", applyFilters);
+	cityFilter.addEventListener("change", applyFilters);
+	sortPrice.addEventListener("change", applyFilters);
+	availableOnly.addEventListener("change", applyFilters);
+	automaticGearbox.addEventListener("change", applyFilters);
+	searchInput.addEventListener("keyup", applyFilters);
 
 	applyFilters();
 });
