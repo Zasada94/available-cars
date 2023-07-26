@@ -48,6 +48,10 @@ const renderVehicleList = (vehicles) => {
 		const card = document.createElement("div");
 		card.classList.add("vehicleCard");
 
+		const heartIcon = document.createElement("img");
+		heartIcon.src = "./heart.png";
+		heartIcon.classList.add("heart");
+
 		const img = document.createElement("img");
 		img.src = vehicle.offer_details.image_paths.front;
 
@@ -94,6 +98,7 @@ const renderVehicleList = (vehicles) => {
 		const button = document.createElement("button");
 		button.innerText = "ZOBACZ OFERTĘ";
 
+		card.appendChild(heartIcon);
 		card.appendChild(title);
 		card.appendChild(subTitle);
 		card.appendChild(availability);

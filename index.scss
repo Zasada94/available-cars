@@ -12,7 +12,7 @@ main {
 header {
 	max-width: 1400px;
 	margin: 0 auto;
-	padding-left: 10px;
+	padding-left: 30px;
 }
 
 .filters {
@@ -20,12 +20,12 @@ header {
 }
 
 .filter {
-	margin-left: 10px;
+	margin-left: 5px;
 	font-size: 14px;
 	padding: 2px 5px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
 	.filters {
 		flex-direction: column;
 	}
@@ -39,13 +39,14 @@ header {
 .vehicleList {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: center;
 }
 
 .vehicleCard {
 	width: 250px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	background: linear-gradient(black, grey 30%);
 	margin: 10px;
 	padding: 40px;
@@ -53,12 +54,21 @@ header {
 	color: #e1e1e1;
 	max-width: 500px;
 	max-height: 50%;
+	position: relative;
 }
 
 @media (max-width: 720px) {
 	.vehicleCard {
 		flex-grow: 1;
 	}
+}
+
+.vehicleCard .heart {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
 }
 
 .vehicleCard img {
