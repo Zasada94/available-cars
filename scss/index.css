@@ -26,9 +26,22 @@ header {
 }
 
 .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-left: 5px;
   font-size: 14px;
   padding: 2px 5px;
+  border: none;
+  position: relative;
+}
+.filter .fa-solid {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+}
+.filter p {
+  margin: 0;
 }
 
 @media (max-width: 800px) {
@@ -62,6 +75,27 @@ header {
 #search {
   border: none;
   border-bottom: 1px solid black;
+  padding-left: 30px;
+}
+
+.checkBox {
+  display: none;
+}
+
+.checkBox + label {
+  background: url("../assets/img/unchecked.png") no-repeat;
+  background-size: contain;
+  height: 16px;
+  width: 16px;
+  padding-left: 3px;
+}
+
+.checkBox:checked + label {
+  background: url("../assets/img/checked.png") no-repeat;
+  background-size: contain;
+  height: 15px;
+  width: 15px;
+  padding-left: 3px;
 }
 
 .vehicleList {
@@ -100,14 +134,6 @@ header {
   max-height: 50%;
   position: relative;
 }
-
-@media (max-width: 720px) {
-  .vehicleCard {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-  }
-}
 .vehicleCard .heart {
   width: 20px;
   height: 20px;
@@ -115,30 +141,25 @@ header {
   top: 20px;
   right: 20px;
 }
-
 .vehicleCard img {
   width: 110%;
 }
-
 .vehicleCard h2 {
   margin: 0;
   color: #e1e1e1;
   font-size: 19px;
 }
-
 .vehicleCard h3:nth-child(2) {
   margin: 5px 5px 20px 5px;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 1px;
 }
-
 .vehicleCard h3:nth-child(3) {
   margin: 5px;
   font-size: 16px;
   font-weight: 500;
 }
-
 .vehicleCard div {
   width: 100%;
   display: -webkit-box;
@@ -152,7 +173,6 @@ header {
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
-
 .vehicleCard div:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -164,12 +184,10 @@ header {
   font-size: 15px;
   font-weight: 600;
 }
-
 .vehicleCard div:nth-child(2).price {
   font-size: 20px;
   margin-top: 10px;
 }
-
 .vehicleCard button {
   border: none;
   padding: 10px 40px;
@@ -177,11 +195,18 @@ header {
   font-weight: 500;
 }
 
-.vehicleCard div:nth-child(2) span {
-  margin-left: 5px;
-  font-weight: 400;
-  color: #e1e1e1;
-  font-size: 15px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+@media (max-width: 720px) {
+  .vehicleCard {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  div:nth-child(2) span {
+    margin-left: 5px;
+    font-weight: 400;
+    color: #e1e1e1;
+    font-size: 15px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
 }/*# sourceMappingURL=index.css.map */

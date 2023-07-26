@@ -49,7 +49,7 @@ const renderVehicleList = (vehicles) => {
 		card.classList.add("vehicleCard");
 
 		const heartIcon = document.createElement("img");
-		heartIcon.src = "./heart.png";
+		heartIcon.src = "./assets/img/heart.png";
 		heartIcon.classList.add("heart");
 
 		const img = document.createElement("img");

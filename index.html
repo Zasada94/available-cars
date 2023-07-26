@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;300;400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/ded1dcb2d2.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.jpg">
+    <link rel="stylesheet" href="./scss/index.css">
 </head>
 
 <body>
@@ -18,18 +20,21 @@
         <h1>OFERTY DEALERÓW</h1>
         <div class="filters">
             <div class="left">
-                <label class="filter">
-                    <input type="checkbox" id="availableOnly">
-                    DOSTĘPNE
-                </label>
-                <label class="filter">
-                    <input type="checkbox">
-                    ULUBIONE
-                </label>
-                <label class="filter">
-                    <input type="checkbox" id="automaticGearbox">
-                    SKRZYNIA AUTOMATYCZNA
-                </label>
+                <div class="filter">
+                    <input type="checkbox" id="availableOnly" class="checkBox">
+                    <label for="availableOnly"> </label>
+                    <p>DOSTĘPNE</p>
+                </div>
+                <div class="filter">
+                    <input type="checkbox" class="checkBox" id="fav">
+                    <label for="fav"> </label>
+                    <p>ULUBIONE</p>
+                </div>
+                <div class="filter">
+                    <input type="checkbox" id="automaticGearbox" class="checkBox">
+                    <label for="automaticGearbox"> </label>
+                    <p>SKRZYNIA AUTOMATYCZNA</p>
+                </div>
             </div>
             <div class="right">
                 <select id="sortPrice" class="filter">
@@ -39,7 +44,10 @@
                 <select id="cityFilter" class="filter">
                     <option value="">WYBIERZ MIASTO</option>
                 </select>
-                <input type="text" placeholder="szukaj..." class="filter" id="search">
+                <div class="filter">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="SZUKAJ..." id="search">
+                </div>
             </div>
         </div>
     </header>
@@ -48,7 +56,7 @@
         <div class="vehicleList" id="vehicleList">
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
