@@ -111,14 +111,38 @@ const renderVehicleList = (vehicles) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
 	const data = await fetchData();
+	let filteredData = data.slice();
 
-	renderVehicleList(data);
+	const renderFilteredData = () => {
+		renderVehicleList(filteredData);
+	};
 
-	//cities array
+	//checking filters simultaneously
+	const applyFilters = () => {
+		const selectedCity = cityFilter.value;
+		const onlyAvailable = document.getElementById("availableOnly").checked;
+		const onlyAutomaticGearbox =
+			document.getElementById("automaticGearbox").checked;
+
+		filteredData = data.filter((vehicle) => {
+			const cityFilterMatch = !selectedCity || selectedCity === vehicle.miasto;
+			const availabilityFilterMatch = !onlyAvailable || vehicle.in_stock === 1;
+			const automaticGearboxFilterMatch =
+				!onlyAutomaticGearbox || vehicle.offer_details.skrzynia_automatyczna;
+
+			return (
+				cityFilterMatch &&
+				availabilityFilterMatch &&
+				automaticGearboxFilterMatch
+			);
+		});
+
+		sortData();
+		renderFilteredData();
+	};
+
+	// Cities filter
 	const cities = [...new Set(data.map((vehicle) => vehicle.miasto))];
-
-	//cities filter
-
 	const cityFilter = document.getElementById("cityFilter");
 	cities.forEach((city) => {
 		const option = document.createElement("option");
@@ -126,39 +150,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 		option.textContent = city;
 		cityFilter.appendChild(option);
 	});
-	const filterCityOffers = () => {
-		const selectedCity = cityFilter.value;
-		const filteredOffers = data.filter(
-			(vehicle) => selectedCity === vehicle.miasto
-		);
-		if (!!selectedCity) {
-			renderVehicleList(filteredOffers);
-		} else {
-			renderVehicleList(data);
-		}
-	};
-	cityFilter.addEventListener("change", filterCityOffers);
-	filterCityOffers();
 
-	//cheapest and most expensive sorting
+	cityFilter.addEventListener("change", applyFilters);
+
+	// Cheapest and most expensive sorting
 	const sortPrice = document.getElementById("sortPrice");
-	let selectedFilter = sortPrice.value;
-
-	const sortPriceOffers = () => {
-		selectedFilter = sortPrice.value;
-		const sortedCheapestOffers = data
-			.slice()
-			.sort((a, b) => a.total_gross_price - b.total_gross_price);
-		const sortedExpOffers = data
-			.slice()
-			.sort((a, b) => b.total_gross_price - a.total_gross_price);
+	const sortData = () => {
+		const selectedFilter = sortPrice.value;
 		if (selectedFilter === "CENY ROSNĄCO") {
-			renderVehicleList(sortedCheapestOffers);
+			filteredData.sort((a, b) => a.total_gross_price - b.total_gross_price);
 		} else {
-			renderVehicleList(sortedExpOffers);
+			filteredData.sort((a, b) => b.total_gross_price - a.total_gross_price);
 		}
 	};
 
-	sortPrice.addEventListener("change", sortPriceOffers);
-	sortPriceOffers();
+	sortPrice.addEventListener("change", () => {
+		sortData();
+		renderFilteredData();
+	});
+
+	// availability filter
+	document
+		.getElementById("availableOnly")
+		.addEventListener("change", applyFilters);
+
+	// gearbox filter
+	document
+		.getElementById("automaticGearbox")
+		.addEventListener("change", applyFilters);
+
+	applyFilters();
 });

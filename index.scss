@@ -9,6 +9,33 @@ main {
 	margin: 0 auto;
 }
 
+header {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding-left: 10px;
+}
+
+.filters {
+	display: flex;
+}
+
+.filter {
+	margin-left: 10px;
+	font-size: 14px;
+	padding: 2px 5px;
+}
+
+@media (max-width: 720px) {
+	.filters {
+		flex-direction: column;
+	}
+
+	.filter {
+		margin-bottom: 5px;
+		max-width: 250px;
+	}
+}
+
 .vehicleList {
 	display: flex;
 	flex-wrap: wrap;
