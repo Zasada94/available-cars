@@ -1,17 +1,17 @@
-async function fetchData() {
+const fetchData = async () => {
 	try {
 		const response = await fetch(
 			"https://gx.pandora.caps.pl/zadania/api/offers2023.json"
 		);
 		const data = await response.json();
-		console.log(data.offers);
+		// console.log(data.offers);
 		return data.offers;
 	} catch (error) {
 		console.error("Error fetching data:", error);
 	}
-}
+};
 
-function getMonth(pdd) {
+const getMonth = (pdd) => {
 	if (pdd.slice(5, 7) === "01") {
 		return "styczeń ";
 	} else if (pdd.slice(5, 7) === "02") {
@@ -37,9 +37,9 @@ function getMonth(pdd) {
 	} else if (pdd.slice(5, 7) === "12") {
 		return "grudzień ";
 	}
-}
+};
 
-function renderVehicleList(vehicles) {
+const renderVehicleList = (vehicles) => {
 	const vehicleList = document.getElementById("vehicleList");
 	vehicleList.innerHTML = "";
 
@@ -106,9 +106,28 @@ function renderVehicleList(vehicles) {
 
 		vehicleList.appendChild(card);
 	});
-}
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
 	const data = await fetchData();
+
 	renderVehicleList(data);
+
+	const cities = [...new Set(data.map((vehicle) => vehicle.miasto))];
+
+	const cityFilter = document.getElementById("cityFilter");
+	cities.forEach((city) => {
+		const option = document.createElement("option");
+		option.value = city;
+		option.textContent = city;
+		cityFilter.appendChild(option);
+	});
+
+	cityFilter.addEventListener("change", () => {
+		const selectedCity = cityFilter.value;
+		const filteredOffers = data.filter(
+			(vehicle) => selectedCity === vehicle.miasto
+		);
+		renderVehicleList(filteredOffers);
+	});
 });
