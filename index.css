@@ -13,7 +13,7 @@ header {
   max-width: 1400px;
   margin: 0 auto;
   padding-left: 30px;
-  padding-right: 30px;
+  padding-right: 50px;
 }
 
 .filters {
@@ -70,8 +70,9 @@ header {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .vehicleCard {
@@ -86,6 +87,9 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(30%, grey));
   background: linear-gradient(black, grey 30%);
   margin: 10px;

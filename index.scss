@@ -13,7 +13,7 @@ header {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding-left: 30px;
-	padding-right: 30px;
+	padding-right: 50px;
 }
 
 .filters {
@@ -58,7 +58,7 @@ header {
 .vehicleList {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
 }
 
 .vehicleCard {
@@ -66,6 +66,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 	background: linear-gradient(black, grey 30%);
 	margin: 10px;
 	padding: 40px;
