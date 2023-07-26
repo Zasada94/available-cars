@@ -84,12 +84,12 @@ const renderVehicleList = (vehicles) => {
 		city.innerHTML = `<div>Miasto: </div> <div>${vehicle.miasto}</div>`;
 
 		const price = document.createElement("div");
-		const priceNet = vehicle.car_price_disc.toString();
+		const priceNet = Math.ceil(vehicle.car_price_disc).toString();
 		price.innerHTML = `<div>Cena netto: </div> <div class="price">
 		${priceNet.slice(-6, -3)} ${priceNet.slice(-3)}  <span> zł</span></div>`;
 
 		const priceTotal = document.createElement("div");
-		const priceTot = vehicle.total_gross_price.toString();
+		const priceTot = Math.ceil(vehicle.total_gross_price).toString();
 		priceTotal.innerHTML = `<div>Cena brutto: </div> <div>${priceTot.slice(
 			-6,
 			-3

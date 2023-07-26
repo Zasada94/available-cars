@@ -34,11 +34,11 @@ header {
 		top: 4px;
 	}
 	p {
-		margin: 0;
+		margin: 0 0 0 20px;
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 	.filters {
 		flex-direction: column;
 	}
@@ -49,7 +49,7 @@ header {
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1050px) {
 	.left,
 	.right {
 		flex-direction: column;
@@ -75,7 +75,6 @@ header {
 	background: url("../assets/img/unchecked.png") no-repeat;
 	background-size: contain;
 	height: 16px;
-	width: 16px;
 	padding-left: 3px;
 }
 
@@ -83,7 +82,6 @@ header {
 	background: url("../assets/img/checked.png") no-repeat;
 	background-size: contain;
 	height: 15px;
-	width: 15px;
 	padding-left: 3px;
 }
 
@@ -120,18 +118,18 @@ header {
 	h2 {
 		margin: 0;
 		color: #e1e1e1;
-		font-size: 19px;
-	}
-	h3:nth-child(2) {
-		margin: 5px 5px 20px 5px;
-		font-size: 18px;
-		font-weight: 400;
-		letter-spacing: 1px;
+		font-size: 17px;
 	}
 	h3:nth-child(3) {
-		margin: 5px;
+		margin: 5px 5px 15px 5px;
 		font-size: 16px;
-		font-weight: 500;
+		font-weight: 300;
+		letter-spacing: 1px;
+	}
+	h3:nth-child(4) {
+		margin: 5px;
+		font-size: 12px;
+		font-weight: 400;
 	}
 	div {
 		width: 100%;
@@ -157,18 +155,19 @@ header {
 		padding: 10px 40px;
 		margin-top: 10px;
 		font-weight: 500;
+		cursor: pointer;
 	}
+}
+div:nth-child(2) span {
+	margin-left: 5px;
+	font-weight: 400;
+	color: #e1e1e1;
+	font-size: 15px;
+	align-self: flex-end;
 }
 
 @media (max-width: 720px) {
 	.vehicleCard {
 		flex-grow: 1;
-	}
-	div:nth-child(2) span {
-		margin-left: 5px;
-		font-weight: 400;
-		color: #e1e1e1;
-		font-size: 15px;
-		align-self: flex-end;
 	}
 }
