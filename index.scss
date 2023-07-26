@@ -13,10 +13,12 @@ header {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .filters {
 	display: flex;
+	justify-content: space-between;
 }
 
 .filter {
@@ -36,10 +38,27 @@ header {
 	}
 }
 
+@media (max-width: 800px) {
+	.left,
+	.right {
+		flex-direction: column;
+	}
+}
+
+.left,
+.right {
+	display: flex;
+}
+
+#search {
+	border: none;
+	border-bottom: 1px solid black;
+}
+
 .vehicleList {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 .vehicleCard {

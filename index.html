@@ -17,25 +17,30 @@
     <header>
         <h1>OFERTY DEALERÓW</h1>
         <div class="filters">
-            <label class="filter">
-                <input type="checkbox" id="availableOnly">
-                DOSTĘPNE
-            </label>
-            <label class="filter">
-                <input type="checkbox">
-                ULUBIONE
-            </label>
-            <label class="filter">
-                <input type="checkbox" id="automaticGearbox">
-                SKRZYNIA AUTOMATYCZNA
-            </label>
-            <select id="sortPrice" class="filter">
-                <option id="sortCheapest">CENY ROSNĄCO</option>
-                <option id="sortExpensive">CENY MALEJĄCO</option>
-            </select>
-            <select id="cityFilter" class="filter">
-                <option value="">WYBIERZ MIASTO</option>
-            </select>
+            <div class="left">
+                <label class="filter">
+                    <input type="checkbox" id="availableOnly">
+                    DOSTĘPNE
+                </label>
+                <label class="filter">
+                    <input type="checkbox">
+                    ULUBIONE
+                </label>
+                <label class="filter">
+                    <input type="checkbox" id="automaticGearbox">
+                    SKRZYNIA AUTOMATYCZNA
+                </label>
+            </div>
+            <div class="right">
+                <select id="sortPrice" class="filter">
+                    <option id="sortCheapest">CENY ROSNĄCO</option>
+                    <option id="sortExpensive">CENY MALEJĄCO</option>
+                </select>
+                <select id="cityFilter" class="filter">
+                    <option value="">WYBIERZ MIASTO</option>
+                </select>
+                <input type="text" placeholder="szukaj..." class="filter" id="search">
+            </div>
         </div>
     </header>
     <main>
