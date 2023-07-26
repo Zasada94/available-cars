@@ -9,7 +9,7 @@ JS app showing cars available in dealers offers API.
 
 
 ## Live
-zasada94.github.io/available-cars/
+https://zasada94.github.io/available-cars/
 
 
 ## How To Install
