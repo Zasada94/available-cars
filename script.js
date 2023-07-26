@@ -1,13 +1,13 @@
+//get data
 const fetchData = async () => {
 	try {
 		const response = await fetch(
 			"https://gx.pandora.caps.pl/zadania/api/offers2023.json"
 		);
 		const data = await response.json();
-		// console.log(data.offers);
 		return data.offers;
 	} catch (error) {
-		console.error("Error fetching data:", error);
+		console.error("Error: ", error);
 	}
 };
 
@@ -39,6 +39,7 @@ const getMonth = (pdd) => {
 	}
 };
 
+//render vehicles
 const renderVehicleList = (vehicles) => {
 	const vehicleList = document.getElementById("vehicleList");
 	vehicleList.innerHTML = "";
@@ -113,7 +114,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 	renderVehicleList(data);
 
+	//cities array
 	const cities = [...new Set(data.map((vehicle) => vehicle.miasto))];
+
+	//cities filter
 
 	const cityFilter = document.getElementById("cityFilter");
 	cities.forEach((city) => {
@@ -122,12 +126,39 @@ document.addEventListener("DOMContentLoaded", async () => {
 		option.textContent = city;
 		cityFilter.appendChild(option);
 	});
-
-	cityFilter.addEventListener("change", () => {
+	const filterCityOffers = () => {
 		const selectedCity = cityFilter.value;
 		const filteredOffers = data.filter(
 			(vehicle) => selectedCity === vehicle.miasto
 		);
-		renderVehicleList(filteredOffers);
-	});
+		if (!!selectedCity) {
+			renderVehicleList(filteredOffers);
+		} else {
+			renderVehicleList(data);
+		}
+	};
+	cityFilter.addEventListener("change", filterCityOffers);
+	filterCityOffers();
+
+	//cheapest and most expensive sorting
+	const sortPrice = document.getElementById("sortPrice");
+	let selectedFilter = sortPrice.value;
+
+	const sortPriceOffers = () => {
+		selectedFilter = sortPrice.value;
+		const sortedCheapestOffers = data
+			.slice()
+			.sort((a, b) => a.total_gross_price - b.total_gross_price);
+		const sortedExpOffers = data
+			.slice()
+			.sort((a, b) => b.total_gross_price - a.total_gross_price);
+		if (selectedFilter === "CENY ROSNĄCO") {
+			renderVehicleList(sortedCheapestOffers);
+		} else {
+			renderVehicleList(sortedExpOffers);
+		}
+	};
+
+	sortPrice.addEventListener("change", sortPriceOffers);
+	sortPriceOffers();
 });
