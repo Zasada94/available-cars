@@ -35,10 +35,10 @@ Project was created with:
 - sorting by most or least expensive ones.
 
 ## Screens
-![Screenshot](./assets/img/screenshots/1.png)
+![Screenshot](./assets/img/screenshots/1.PNG)
 
-![Screenshot](./assets/img/screenshots/2.png)
+![Screenshot](./assets/img/screenshots/2.PNG)
 
-![Screenshot](./assets/img/screenshots/3.png)
+![Screenshot](./assets/img/screenshots/3.PNG)
 
 
