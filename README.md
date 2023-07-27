@@ -6,6 +6,7 @@ JS app showing cars available in dealers offers API.
 - [How To Install](#how-to-install)
 - [Technologies](#technologies)
 - [Functionalities](#functionalities)
+- [Screens](#screens)
 
 
 ## Live
@@ -32,5 +33,12 @@ Project was created with:
 - filtering and sorting through array of cars.
 - filtering with availability, autoamtic gearbox and city.
 - sorting by most or least expensive ones.
+
+## Screens
+![Screenshot](./assets/img/screenshots/1.png)
+
+![Screenshot](./assets/img/screenshots/2.png)
+
+![Screenshot](./assets/img/screenshots/3.png)
 
 
