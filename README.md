@@ -33,6 +33,7 @@ Project was created with:
 - filtering and sorting through array of cars.
 - filtering with availability, autoamtic gearbox and city.
 - sorting by most or least expensive ones.
+- searching through cars title, description and other characteristics.
 
 ## Screens
 ![Screenshot](./assets/img/screenshots/1.PNG)
